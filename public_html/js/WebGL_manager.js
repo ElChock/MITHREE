@@ -13,8 +13,8 @@
             
             scene.fog=fogScene;
             
-            camera.position.y=0;
-            camera.position.z = -500;
+            camera.position.y=4000;
+            camera.position.z = -2000;
             camera.lookAt(new THREE.Vector3( 1,1, 1 ));
             
             var renderer ;

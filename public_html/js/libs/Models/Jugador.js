@@ -5,7 +5,7 @@
  */
 
 
-var Jugador=function(modelPath,texturePath,scene,nombre,objectCollision){
+var Jugador=function(modelPath,texturePath,scene,nombre,objectCollision,clone){
     this.position = new THREE.Vector3(0.0, 0, 0);
     this.rotation = new THREE.Vector3(0.0, 0.0, 0.0);
     this.scale = new THREE.Vector3(1, 1,1);
@@ -13,14 +13,15 @@ var Jugador=function(modelPath,texturePath,scene,nombre,objectCollision){
     this.textura;
     this.proyectil=[];
     this.scene=scene;
-    
-   /* var geometry = new THREE.SphereGeometry( 200, 20, 20 );
-					var material = new THREE.MeshBasicMaterial( {color:0xffffff,  overdraw: 0.5 } );
-					var mesh = new THREE.Mesh( geometry, material );*/
-                                        
-    //this.modelo=mesh;
     this.name=nombre;
-    this.Create(modelPath,texturePath,this.scene,this.name,this.scale,this.position,this.rotation,objectCollision);
+    this.objectCollision=objectCollision;
+    if(clone==null){
+        this.Create(modelPath,texturePath,this.scene,this.name,this.scale,this.position,this.rotation,this.objectCollision);
+    }
+    else{
+        this.CreateClone(clone,this.scene,this.name,this.scale,this.position,this.rotation,this.objectCollision);
+    }
+        
 };
 
 Jugador.prototype={
@@ -46,7 +47,7 @@ Jugador.prototype={
         obje.rotateOnAxis(new THREE.Vector3(rx,ry,rz),_ang);
     },
     GetObject3d:function(){
-        return obje=this.scene.getObjectByName(this.name);
+        return this.scene.getObjectByName(this.name);
     },
     Delete:function(){
     obje=this.scene.getObjectByName(this.name);
@@ -106,9 +107,14 @@ Jugador.prototype={
                                                                //object.scale=scale.;
                                                                 object.children[0].material=material;
                                                                 object.name=name;
+                                                                console.log(object.name);
+                                                                console.log(objectCollision);
                                                             scene.add(object);
-                                                            if(name!=="jugador")
+                                                            if(name!=="jugador"){
+                                                                
                                                             objectCollision.push(object);
+                                                            }
+                                                        
                                                     }
                                             );
                             },
@@ -121,6 +127,33 @@ Jugador.prototype={
                                     console.log( 'An error happened' );
                             }
                     );
-}
+    },
+    CreateClone:function(jugador,scene,name,scale,position,rotation,objectCollision){
+        var obj=jugador.GetObject3d();
+        obj.scale.x=scale.x;
+        obj.scale.y=scale.y;
+        obj.scale.z=scale.z;
+        obj.position.x=position.x;
+        obj.position.y=position.y;
+        obj.position.z=position.z;
+        obj.rotation.x=rotation.x;
+        obj.rotation.y=rotation.y;
+        obj.rotation.z=rotation.z;
+        obj.name=name;
+        console.log(obj.name);
+        console.log(objectCollision);
+        scene.add(obj);
+        
+        if(name!=="jugador"){
+            objectCollision.push(obj);
+        }
+        
+        
+    }
+   
+
+
+        
 };
+
 
