@@ -118,6 +118,7 @@ $(document).ready(function() {
             var delta=clock.getDelta();
             deltaTimeShot+=delta;
             deltaTimeEnemiSpawn+=delta;
+            if(planeta.modelo)
             planeta.Rotate(0,1,0,1);
            // luna.Rotate(0,1,0,1);
            
