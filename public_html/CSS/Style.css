@@ -7,7 +7,12 @@ and open the template in the editor.
     Created on : 3/05/2017, 08:16:08 PM
     Author     : Ayrton
 */
-
+body {
+    background-color: black;
+}
+li{
+    color: white;
+}
 .Score{
     font-size: 300%;
     padding-top: 4%;
@@ -18,8 +23,8 @@ and open the template in the editor.
 }
 .menuVisible{
     position: absolute;
-    padding-left: 45%;
-    padding-top: 30%;
+    padding-left: 35%;
+    padding-top: 20%;
     
 }
 
@@ -32,8 +37,8 @@ and open the template in the editor.
 .lblNinckname{
     color:white;
     font-size: 300%;
-    padding-top: 4%;
-    right: 5%;
-    position: absolute;
+    
+    
+    
 }
 

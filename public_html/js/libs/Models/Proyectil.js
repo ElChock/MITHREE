@@ -14,9 +14,11 @@ var Proyectil=function(objectCollision){
     this.name;
     this.scene;
     this.rays=[];
-    
+    this.light;
     this.caster;
     this.objectCollision=objectCollision;
+    
+    
     
     this.Create();
 };
@@ -43,6 +45,7 @@ Proyectil.prototype={
         new THREE.Vector3(0, 0, 1),
         new THREE.Vector3(0, 0, -1)
         ];
+        this.light=new THREE.PointLight( 0xff0000, 1, 100 );
         this.caster= new THREE.Raycaster();
         //this.objectCollision.push(this.modelo);
         
@@ -52,7 +55,7 @@ Proyectil.prototype={
             var ray = this.rays[i];
             this.caster.set(this.position,ray);
             var collision = this.caster.intersectObjects(this.objectCollision,true);
-            if (collision.length>0&&collision[0].distance<10){
+            if (collision.length>0&&collision[0].distance<50){
 		console.log("colision");
                 return collision[0].object;
             }

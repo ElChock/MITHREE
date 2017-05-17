@@ -75,8 +75,10 @@ Jugador.prototype={
       bala.modelo.name="time"+new Date().getTime();
       bala.position=_position;
       bala.scene=this.scene;
+      bala.light.position.set(_position);
       this.proyectil.push(bala);
       this.scene.add(bala.modelo);
+      //this.scene.add(bala.light);
       
     },
     Create:function(modelPath,texturePath,scene,name,scale,position,rotation,objectCollision){
