@@ -119,7 +119,10 @@ $(document).ready(function() {
             deltaTimeShot+=delta;
             deltaTimeEnemiSpawn+=delta;
             if(planeta.modelo)
-            planeta.Rotate(0,1,0,1);
+            if(planeta.modelo!==undefined){
+               planeta.Rotate(0,1,0,1);
+            }
+            
            // luna.Rotate(0,1,0,1);
            
            
@@ -154,8 +157,14 @@ $(document).ready(function() {
                             score++;
                             enemigo[i].Delete();
                             enemigo.splice(i,1);
-                            UpdateScore();
                             
+                            UpdateScore();
+                            for (var i = 0; i < objectCollision.length; i++) {
+                                if(objectCollision[i].name==name){
+                                    objectCollision.splice(i,1);
+                            }
+                        
+                    }
                         }
 
                     }
@@ -173,14 +182,15 @@ $(document).ready(function() {
 
             for(var i=0;i<enemigo.length;i++)
             {
-                if(enemigo[i].position.z<-150){
+                if(enemigo[i].position.z<-200){
                     //alert("perdiste");
-                    //SendNudes();
-                        var r = confirm("Press a button!");
+                    //
+                        var r = confirm("Tu puntuacion fue de: "+score+"!\n quieres subir tu puntuacio?");
                         if (r == true) {
-                            window.location.replace("http://localhost:8383/MI%20three/index.html");
+                            window.location.replace("http://shotingstars.tk");
+                            SendNudes();
                         } else {
-                            txt = "You pressed Cancel!";
+                            window.location.replace("http://shotingstars.tk");
                         }
                         
                     
@@ -362,7 +372,7 @@ function ExplodeAnimation(x,y)
     if (this.status == true){
       var pCount = totalObjects;
       while(pCount--) {
-        var particle =  this.object.geometry.vertices[pCount]
+        var particle =  this.object.geometry.vertices[pCount];
         particle.y += dirs[pCount].y;
         particle.x += dirs[pCount].x;
         particle.z += dirs[pCount].z;
@@ -375,7 +385,7 @@ function ExplodeAnimation(x,y)
 
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-container.appendChild( renderer.domElement );
+
 
 renderer.render( scene, camera );
 parts.push(new ExplodeAnimation(0, 0));
