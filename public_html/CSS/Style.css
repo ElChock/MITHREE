@@ -7,6 +7,10 @@ and open the template in the editor.
     Created on : 3/05/2017, 08:16:08 PM
     Author     : Ayrton
 */
+.botonPausa{
+    position: absolute;
+    padding-left: 90%;
+}
 body {
     background-color: black;
 }
@@ -37,9 +41,15 @@ li{
 .lblNinckname{
     color:white;
     font-size: 300%;
+
+}
+.lblNicknameJugador{
+        position: absolute;
+    padding-top: 2%;
 }
 
 .facebookShare{
     position: absolute;
+    
 }
 

@@ -36,38 +36,34 @@ and open the template in the editor.
         
     </head>
     <body>
-    <audio id="song" loop autoplay>
-        <source src="Assets/Sound/Shooting Stars.mp3" type="audio/mpeg">
-    </audio>     
-        <div class="menuVisible" id="menu">
-            <label class="lblNinckname" >  Nickname </label>
-            <input type="text" id="nickname"  >
-            <button id="jugar" onclick="StartGame()">Jugar</button>
-            <div id="contenedorListaPuntuacion">
-                <ul id="listaPuntuacion">
- 
-                </ul>
+        <audio id="song" loop autopla>
+            <source src="Assets/Sound/Shooting Stars.mp3" type="audio/mpeg">
+        </audio>     
+            <div class="menuVisible" id="menu">
+                <label class="lblNinckname" id="nickNameJugador">  Nickname </label>
+                <input type="text" id="nickname"  >
+                <button id="jugar" onclick="StartGame()">Jugar</button>
+                <div id="contenedorListaPuntuacion">
+                    <ul id="listaPuntuacion">
+
+                    </ul>
+                </div>
             </div>
-        </div>
 
-                <div class="fb-share-button ,facebookShare" data-href="http://shotingstars.tk" data-layout="button_count" data-size="small" data-mobile-iframe="true">
-            <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshotingstars.tk%2F&amp;src=sdkpreparse">Share</a>
-        </div>
-        <span class="Score">
-            <label>Score: </label>    
-            <label id="score"></label>    
-        </span>
-        
-        <span class="lblNinckname">
-            <label>Nickname: </label>
-            <label id="lblNickname"></label>
-        </span>
+            <div class="facebookShare fb-share-button " data-href="http://shotingstars.tk" data-layout="button_count" data-size="small" data-mobile-iframe="true">
+                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshotingstars.tk%2F&amp;src=sdkpreparse">Share</a>
+            </div>
+            <span class="Score">
+                <label>Score: </label>    
+                <label id="score"></label>    
+            </span>
 
-        
-
-
-        
-        
-        
+            <span class="lblNinckname">
+                <label>Nickname: </label>
+                <label id="lblNickname"></label>
+            </span>
+            <div class="botonPausa"> 
+                <button  id="pausa" onclick="Pausa()">pausar</button>
+            </div>
     </body>
 </html>
